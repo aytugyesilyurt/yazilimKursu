@@ -4,10 +4,18 @@ namespace _5_HW2_Interfaces2
 {
     class Program
     {
+        // interfaceler new'lenemez
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-        }
+            IPersonManager customerManager = new CustomerManager();
+            customerManager.Add();
+
+            IPersonManager employeeManager = new EmployeeManager();
+            employeeManager.Add();
+
+            Console.ReadLine();
+
+            }
     }
 
     //class PersonManager
@@ -23,13 +31,22 @@ namespace _5_HW2_Interfaces2
     {
         //unimplemented operation (içi boş operasyon)
         void Add();
+        void Update();
+
     }
+
+    // classlarda - inherits  ------------- interfacede - implements
     class CustomerManager : IPersonManager 
     {
         public void Add()
         {
             //müşteri ekleme kodları
             Console.WriteLine("Müşteri sisteme kaydedildi.");
+        }
+
+        public void Update()
+        {
+            Console.WriteLine("Müşteri kaydı güncellendi.");
         }
     }
 
@@ -39,6 +56,19 @@ namespace _5_HW2_Interfaces2
         {
             //personel ekleme kodları
             Console.WriteLine("Personel sisteme kaydedildi.");
+        }
+
+        public void Update()
+        {
+            Console.WriteLine("Personel kaydı güncellendi.");
+        }
+    }
+
+    class ProjectManager
+    {
+        public void Add(IPersonManager personManager)
+        {
+            personManager.Add();
         }
     }
 
