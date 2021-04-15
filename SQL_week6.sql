@@ -62,3 +62,12 @@ select * from Customers c left join Orders o on c.CustomerID = o.CustomerID wher
 
 -- 2 den fazla tabloyu birleştirmek istenirse devamına inner join tablo belirtilir ve on ile tekrar datalar eşleştirilir
 select * from Products p inner join [Order Details] od on p.ProductID = od.ProductID inner join Orders o on o.OrderID = od.OrderID
+
+
+-- 6. HAFTA ÖDEV 2
+Select p.ProductName As [Ürun Adı], sum(od.UnitPrice*od.Quantity) As [Kazanılan Toplam Miktar]
+from Products p
+inner join [Order Details] od on p.ProductID = od.ProductID
+inner join Orders o on od.OrderID = o.OrderID
+Group by p.ProductName
+Order by 2 desc
