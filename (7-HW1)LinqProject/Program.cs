@@ -40,7 +40,7 @@ namespace _7_HW1_LinqProject
 
             //ClassicLinqTest(products);
 
-
+            //SQL
 
             var result = from p in products
                          join c in categories
